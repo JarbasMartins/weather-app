@@ -7,8 +7,8 @@ import {
     infoDescription,
     dailyElements,
 } from "./DomElements";
-import { formatDateTime } from "../../utils/Validators";
-import type { SelectedCity, ForecastResponse } from "../../types/Forecast";
+import { formatDateTime } from "../../utils/validators";
+import type { SelectedCity, ForecastResponse } from "../../types/forecast";
 import { getWeatherDescription } from "../../utils/weatherMap";
 
 export const formatTemp = (value: number | undefined): string => (value !== undefined ? `${Math.round(value)}°` : "—");

@@ -1,6 +1,6 @@
-import type { ForecastParams, ForecastResponse } from "../../types/Forecast";
+import type { ForecastParams, ForecastResponse } from "../../types/forecast";
 import { updateWeatherDisplay } from "../Ui/weatherDisplay";
-import { showLoadingContent, removeLoadingContent } from "../Ui/Loading";
+import { showLoadingContent, removeLoadingContent } from "../Ui/loading";
 import { loadingElements } from "../Ui/DomElements";
 
 const FORECAST_CONFIG = {

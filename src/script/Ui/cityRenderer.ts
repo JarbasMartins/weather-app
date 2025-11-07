@@ -1,5 +1,5 @@
 import { listCity, containerListCity } from "../Ui/DomElements";
-import type { LocationResult, SelectedCity } from "../../types/Forecast";
+import type { LocationResult, SelectedCity } from "../../types/forecast";
 
 export function renderCitySuggestions(
     results: LocationResult[] | null,

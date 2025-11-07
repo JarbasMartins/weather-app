@@ -1,9 +1,9 @@
 import "./style.css";
 
 import { searchButton } from "./script/Ui/DomElements";
-import { initWeather } from "./script/services";
+import { initWeather } from "./script/services/index";
 import { getCityStats } from "./script/services/forecast.service";
-import type { SelectedCity } from "./types/Forecast";
+import type { SelectedCity } from "./types/forecast";
 import { updateCityDisplay } from "./script/Ui/weatherDisplay";
 
 searchButton?.addEventListener("click", (e) => {

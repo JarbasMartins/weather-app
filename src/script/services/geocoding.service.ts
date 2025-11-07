@@ -1,5 +1,5 @@
-import type { LocationResult, GeocodingParams, GeocodingResponse } from "../../types/Forecast";
-import { isValidCityName } from "../../utils/Validators";
+import type { LocationResult, GeocodingParams, GeocodingResponse } from "../../types/forecast";
+import { isValidCityName } from "../../utils/validators";
 
 const GEOCODING_CONFIG = {
     baseUrl: import.meta.env.VITE_API_GEOCODING,
