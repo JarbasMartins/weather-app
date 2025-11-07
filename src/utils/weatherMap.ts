@@ -1,0 +1,25 @@
+const weatherDescriptionMap: Record<number, string> = {
+    0: "Céu limpo",
+    1: "Parcialmente limpo",
+    2: "Parcialmente nublado",
+    3: "Nublado",
+    45: "Nevoeiro",
+    48: "Nevoeiro gelado",
+    51: "Garoa leve",
+    53: "Garoa moderada",
+    55: "Garoa intensa",
+    61: "Chuva leve",
+    63: "Chuva moderada",
+    65: "Chuva forte",
+    71: "Neve leve",
+    73: "Neve moderada",
+    75: "Neve intensa",
+    80: "Chuva passageira leve",
+    81: "Chuva passageira moderada",
+    82: "Chuva passageira forte",
+    95: "Tempestade",
+    96: "Tempestade com granizo leve",
+    99: "Tempestade com granizo forte",
+};
+
+export const getWeatherDescription = (code: number): string => weatherDescriptionMap[code] ?? "—";
