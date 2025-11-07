@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+        <title>Weather App</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet" />
+    </head>
+    <body class="min-h-screen w-full bg-[#02012b] text-white font-[Montserrat] antialiased">
+        <section class="w-full h-full p-4 sm:p-8 flex flex-col justify-center items-center">
+            <header class="w-full flex justify-between items-center">
+                <img src="./src/assets/images/logo.svg" alt="Logo" />
+                <button class="flex items-center justify-center gap-2 btn-primary">
+                    Unidades
+                    <span> <img src="./src/assets/images/icon-dropdown.svg" alt="Ícone Menu Suspenso" /></span>
+                </button>
+            </header>
+
+            <nav class="w-full flex flex-col items-center justify-center gap-5 p-4 min-h-[200px]">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-center">Como está o céu hoje?</h1>
+
+                <div class="flex items-center justify-center gap-3 w-full relative">
+                    <div class="relative w-3/4 sm:w-1/2 lg:w-1/4">
+                        <input
+                            type="text"
+                            name="search"
+                            id="search-input"
+                            placeholder="Buscar por um local..."
+                            class="bg-[#25253f] border-0 px-3 py-2 rounded-lg w-full text-white placeholder-gray-400"
+                        />
+
+                        <div
+                            id="container-list-city"
+                            class="absolute z-10 w-full bg-[#35355a] rounded-xs shadow-lg mt-2 hidden"
+                        >
+                            <ul class="text-white p-2" id="list-city"></ul>
+                        </div>
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="search-button"
+                        class="bg-indigo-600 text-white px-3 py-2 rounded-lg font-semibold cursor-pointer"
+                    >
+                        Buscar
+                    </button>
+                </div>
+            </nav>
+
+            <main class="w-full flex flex-col md:flex-row gap-5 min-h-[600px]">
+                <div class="flex flex-col flex-1 md:flex-[3] gap-4">
+                    <div
+                        id="container-today"
+                        class="w-full p-4 h-full min-h-[250px] bg-[url('./src/assets/images/bg-today-large.svg')] bg-no-repeat bg-center bg-cover rounded-2xl flex flex-wrap items-center loading justify-center text-center sm:text-start sm:justify-between"
+                    >
+                        <div class="flex flex-col px-4 sm:px-8 py-4">
+                            <h2 class="font-bold text-3xl sm:text-4xl">
+                                <span id="today-title-city">Cidade</span>, <span id="today-title-state">País</span>
+                            </h2>
+                            <p class="text-lg sm:text-xl opacity-80" id="today-description">
+                                Terça-feira, 5 de Agosto, 2025
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-center px-4 sm:px-8 py-4">
+                            <h1 class="text-6xl sm:text-8xl mr-3 sm:mr-5" id="today-icon">☀️</h1>
+                            <h1 class="text-5xl sm:text-6xl font-bold" id="today-temp">20°</h1>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-around gap-y-4 gap-x-6">
+                        <div class="info loading w-full sm:w-1/2 md:flex-1">
+                            <h3 class="opacity-60 font-normal">Sensação Térmica</h3>
+                            <p class="text-xl info-description">—</p>
+                        </div>
+                        <div class="info loading w-full sm:w-1/2 md:flex-1">
+                            <h3 class="opacity-60 font-normal">Umidade</h3>
+                            <p class="text-xl info-description">—</p>
+                        </div>
+                        <div class="info loading w-full sm:w-1/2 md:flex-1">
+                            <h3 class="opacity-60 font-normal">Cobertura de Nuvens</h3>
+                            <p class="text-xl info-description">—</p>
+                        </div>
+                        <div class="info loading w-full sm:w-1/2 md:flex-1">
+                            <h3 class="opacity-60 font-normal">Clima Atual</h3>
+                            <p class="text-xl info-description">—</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold">Previsão diária</h4>
+                        <div class="flex justify-between gap-3 mt-2 overflow-x-auto">
+                            <div class="daily loading flex-shrink-0 min-w-[70px] text-center">
+                                <span class="opacity-60 font-normal text-xl">Seg</span>
+                                <span>
+                                    <img
+                                        src="src/assets/images/icon-fog.webp"
+                                        alt="Ícone Neblina"
+                                        class="h-16 mx-auto"
+                                    />
+                                </span>
+                                <div
+                                    class="flex w-full items-center justify-center gap-4 opacity-70 text-lg container-temperature"
+                                >
+                                    <span>0°</span>
+                                    <span>0°</span>
+                                </div>
+                            </div>
+                            <div class="daily loading flex-shrink-0 min-w-[70px] text-center">
+                                <span class="opacity-60 font-normal text-xl">Ter</span>
+                                <span>
+                                    <img
+                                        src="src/assets/images/icon-fog.webp"
+                                        alt="Ícone Neblina"
+                                        class="h-16 mx-auto"
+                                    />
+                                </span>
+                                <div
+                                    class="flex w-full items-center justify-center gap-4 opacity-70 text-lg container-temperature"
+                                >
+                                    <span>0°</span>
+                                    <span>0°</span>
+                                </div>
+                            </div>
+                            <div class="daily loading flex-shrink-0 min-w-[70px] text-center">
+                                <span class="opacity-60 font-normal text-xl">Qua</span>
+                                <span>
+                                    <img
+                                        src="src/assets/images/icon-fog.webp"
+                                        alt="Ícone Neblina"
+                                        class="h-16 mx-auto"
+                                    />
+                                </span>
+                                <div
+                                    class="flex w-full items-center justify-center gap-4 opacity-70 text-lg container-temperature"
+                                >
+                                    <span>0°</span>
+                                    <span>0°</span>
+                                </div>
+                            </div>
+                            <div class="daily loading flex-shrink-0 min-w-[70px] text-center">
+                                <span class="opacity-60 font-normal text-xl">Qui</span>
+                                <span>
+                                    <img
+                                        src="src/assets/images/icon-fog.webp"
+                                        alt="Ícone Neblina"
+                                        class="h-16 mx-auto"
+                                    />
+                                </span>
+                                <div
+                                    class="flex w-full items-center justify-center gap-4 opacity-70 text-lg container-temperature"
+                                >
+                                    <span>0°</span>
+                                    <span>0°</span>
+                                </div>
+                            </div>
+                            <div class="daily loading flex-shrink-0 min-w-[70px] text-center">
+                                <span class="opacity-60 font-normal text-xl">Sex</span>
+                                <span>
+                                    <img
+                                        src="src/assets/images/icon-fog.webp"
+                                        alt="Ícone Neblina"
+                                        class="h-16 mx-auto"
+                                    />
+                                </span>
+                                <div
+                                    class="flex w-full items-center justify-center gap-4 opacity-70 text-lg container-temperature"
+                                >
+                                    <span>0°</span>
+                                    <span>0°</span>
+                                </div>
+                            </div>
+                            <div class="daily loading flex-shrink-0 min-w-[70px] text-center">
+                                <span class="opacity-60 font-normal text-xl">Sáb</span>
+                                <span>
+                                    <img
+                                        src="src/assets/images/icon-fog.webp"
+                                        alt="Ícone Neblina"
+                                        class="h-16 mx-auto"
+                                    />
+                                </span>
+                                <div
+                                    class="flex w-full items-center justify-center gap-4 opacity-70 text-lg container-temperature"
+                                >
+                                    <span>0°</span>
+                                    <span>0°</span>
+                                </div>
+                            </div>
+                            <div class="daily loading flex-shrink-0 min-w-[70px] text-center">
+                                <span class="opacity-60 font-normal text-xl">Dom</span>
+                                <span>
+                                    <img
+                                        src="src/assets/images/icon-fog.webp"
+                                        alt="Ícone Neblina"
+                                        class="h-16 mx-auto"
+                                    />
+                                </span>
+                                <div
+                                    class="flex w-full items-center justify-center gap-4 opacity-70 text-lg container-temperature"
+                                >
+                                    <span>0°</span>
+                                    <span>0°</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="flex-1 w-full md:w-auto bg-[#25253f] rounded-2xl px-4 py-8 min-h-[400px]">
+                    <header class="flex items-center justify-between">
+                        <h4 class="text-lg font-semibold text-white">Previsão por hora</h4>
+                        <div class="flex items-center gap-2">
+                            <select
+                                id="day"
+                                class="bg-[#454559] text-white px-3 py-1 rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-indigo-400 cursor-pointer"
+                            >
+                                <option value="monday">Segunda</option>
+                                <option value="tuesday" selected>Terça</option>
+                                <option value="wednesday">Quarta</option>
+                                <option value="thursday">Quinta</option>
+                                <option value="friday">Sexta</option>
+                                <option value="saturday">Sábado</option>
+                                <option value="sunday">Domingo</option>
+                            </select>
+                        </div>
+                    </header>
+                    <article class="flex flex-col items-center justify-start gap-4 h-full mt-4 overflow-y-auto">
+                        <div class="hourly-forecast-card loading w-full flex items-center justify-between">
+                            <div class="flex items-center justify-center gap-2">
+                                <img src="./src/assets/images/icon-drizzle.webp" alt="Ícone Garoa" class="h-10" />
+                                <h4 class="text-white font-medium">15h</h4>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold">32°</h5>
+                            </div>
+                        </div>
+                        <div class="hourly-forecast-card loading w-full flex items-center justify-between">
+                            <div class="flex items-center justify-center gap-2">
+                                <img src="./src/assets/images/icon-drizzle.webp" alt="Ícone Garoa" class="h-10" />
+                                <h4 class="text-white font-medium">16h</h4>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold">31°</h5>
+                            </div>
+                        </div>
+                        <div class="hourly-forecast-card loading w-full flex items-center justify-between">
+                            <div class="flex items-center justify-center gap-2">
+                                <img src="./src/assets/images/icon-drizzle.webp" alt="Ícone Garoa" class="h-10" />
+                                <h4 class="text-white font-medium">17h</h4>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold">30°</h5>
+                            </div>
+                        </div>
+                        <div class="hourly-forecast-card loading w-full flex items-center justify-between">
+                            <div class="flex items-center justify-center gap-2">
+                                <img src="./src/assets/images/icon-drizzle.webp" alt="Ícone Garoa" class="h-10" />
+                                <h4 class="text-white font-medium">18h</h4>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold">28°</h5>
+                            </div>
+                        </div>
+                        <div class="hourly-forecast-card loading w-full flex items-center justify-between">
+                            <div class="flex items-center justify-center gap-2">
+                                <img src="./src/assets/images/icon-drizzle.webp" alt="Ícone Garoa" class="h-10" />
+                                <h4 class="text-white font-medium">19h</h4>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold">27°</h5>
+                            </div>
+                        </div>
+                        <div class="hourly-forecast-card loading w-full flex items-center justify-between">
+                            <div class="flex items-center justify-center gap-2">
+                                <img src="./src/assets/images/icon-drizzle.webp" alt="Ícone Garoa" class="h-10" />
+                                <h4 class="text-white font-medium">20h</h4>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold">26°</h5>
+                            </div>
+                        </div>
+                        <div class="hourly-forecast-card loading w-full flex items-center justify-between">
+                            <div class="flex items-center justify-center gap-2">
+                                <img src="./src/assets/images/icon-drizzle.webp" alt="Ícone Garoa" class="h-10" />
+                                <h4 class="text-white font-medium">21h</h4>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold">25°</h5>
+                            </div>
+                        </div>
+                    </article>
+                </aside>
+            </main>
+        </section>
+        <script type="module" src="src/main.ts"></script>
+    </body>
+</html>

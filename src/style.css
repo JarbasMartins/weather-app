@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+* {
+    scrollbar-width: none;
+}
+
+@layer components {
+    .info {
+        @apply h-[100px] w-full bg-[#25253f] rounded-2xl border-2 border-[#33334b] p-4 flex flex-col justify-between;
+    }
+
+    .daily {
+        @apply w-36  bg-[#25253f] rounded-lg h-40 p-4 flex flex-col items-center justify-around;
+    }
+
+    .btn-primary {
+        @apply bg-[#25253f] px-4 py-2 rounded-lg  font-semibold text-white opacity-80;
+    }
+
+    .hourly-forecast-card {
+        @apply w-full flex justify-between items-center h-16  bg-[#454559] rounded-lg border border-[#616171] px-4;
+    }
+
+    .hourly-forecast-card h4 {
+        @apply text-white font-medium;
+    }
+
+    .hourly-forecast-card h5 {
+        @apply text-white font-semibold;
+    }
+}
+
+.loading-skeleton {
+    background: linear-gradient(90deg, #35355a 25%, #454565 50%, #35355a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    color: transparent;
+    z-index: 1000;
+}
+@keyframes shimmer {
+    100% {
+        background-position-x: -200%;
+    }
+}
