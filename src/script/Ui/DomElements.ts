@@ -1,0 +1,14 @@
+export const searchInput = document.querySelector<HTMLInputElement>("#search-input");
+export const searchButton = document.querySelector<HTMLButtonElement>("#search-button");
+export const listCity = document.querySelector<HTMLUListElement>("#list-city");
+export const containerListCity = document.querySelector<HTMLDivElement>("#container-list-city");
+export const containerToday = document.querySelector<HTMLElement>(".container-today");
+export const todayTitleCity = document.querySelector<HTMLElement>("#today-title-city");
+export const todayTitleState = document.querySelector<HTMLElement>("#today-title-state");
+export const todayDescription = document.querySelector<HTMLElement>("#today-description");
+export const todayIcon = document.querySelector<HTMLImageElement>("#today-icon");
+export const todayTemp = document.querySelector<HTMLElement>("#today-temp");
+export const infoTitle = document.querySelectorAll<HTMLTitleElement>(".info h3");
+export const infoDescription = document.querySelectorAll<HTMLParagraphElement>(".info-description");
+export const dailyElements = document.querySelectorAll<HTMLDivElement>(".daily");
+export const loadingElements = document.querySelectorAll(".loading");
